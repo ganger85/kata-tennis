@@ -51,4 +51,38 @@ class TennisGameTest extends UnitSpec{
     (1 to 4).foreach(x => sarah.winBall())
     game.score should be("advantage Sarah")
   }
+  "Deuce" should "be description when at least three points have been scored by each player and the scores are equal" in {
+    val victor = Player("Victor")
+    val sarah = Player("Sarah")
+    val game = new TennisGame(victor, sarah)
+    (1 to 3).foreach(x => victor.winBall())
+    (1 to 3).foreach(x => sarah.winBall())
+    game.score should be("deuce")
+    victor.winBall()
+    game.score should not be "deuce"
+    sarah.winBall()
+    game.score should be("deuce")
+  }
+  "Game" should "be won by the first player to have won at least four points in total and with at least two points more than the opponent" in {
+    val victor = Player("Victor")
+    val sarah = Player("Sarah")
+    val game = new TennisGame(victor, sarah)
+    (1 to 4).foreach(x => victor.winBall())
+    (1 to 3).foreach(x => sarah.winBall())
+    game.score should not be "Victor won"
+    game.score should not be "Sarah won"
+    victor.winBall()
+    game.score should be("Victor won")
+  }
+  it should "be won by player2" in {
+    val victor = Player("Victor")
+    val sarah = Player("Sarah")
+    val game = new TennisGame(victor, sarah)
+    (1 to 3).foreach(x => victor.winBall())
+    (1 to 4).foreach(x => sarah.winBall())
+    game.score should not be "Victor won"
+    game.score should not be "Sarah won"
+    sarah.winBall()
+    game.score should be("Sarah won")
+  }
 }
