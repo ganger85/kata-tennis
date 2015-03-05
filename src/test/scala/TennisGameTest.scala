@@ -17,5 +17,11 @@ class TennisGameTest extends UnitSpec{
     val game = new TennisGame(victor, sarah)
     game.score should be("love, love")
   }
-
+  "Fifteen" should "be description for score 1" in {
+    val victor = Player("Victor")
+    val sarah = Player("Sarah")
+    val game = new TennisGame(victor, sarah)
+    sarah.winBall
+    game.score should be("love, fifteen")
+  }
 }
