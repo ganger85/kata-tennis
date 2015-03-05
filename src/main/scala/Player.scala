@@ -1,6 +1,3 @@
-/**
- * Created by arincon on 5/03/15.
- */
 object Player {
   def apply(name: String) = {new Player(name)}
 
@@ -9,7 +6,12 @@ object Player {
 }
 
 class Player(name: String){
+  val noun: String = name
+
   var score: Int = 0
-  def winBall = {score += 1}
+
+  def winBall() = {
+    score += 1
+  }
 
 }
