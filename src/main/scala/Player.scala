@@ -1,8 +1,5 @@
 object Player {
   def apply(name: String) = {new Player(name)}
-
-
-
 }
 
 class Player(name: String){
